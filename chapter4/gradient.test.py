@@ -29,6 +29,13 @@ class TestStringMethods(unittest.TestCase):
       roundedVal = [round(x, 4) for x in ans.tolist()]
       self.assertEqual(roundedVal, [0.0000, 4.0000])
 
+  def testGradient(self):
+      def func(x):
+          return x[0]**2 + x[1]**2
+
+      init_x = np.array([-3.0, 4.0])
+      ans = gradient.gradient_descent(func, init_x=init_x, lr=0.1, step_num=100)
+      self.assertEqual(ans.tolist(), [-6.111107928998789e-10, 8.148143905314271e-10])
 
 if __name__ == '__main__':
     unittest.main()
