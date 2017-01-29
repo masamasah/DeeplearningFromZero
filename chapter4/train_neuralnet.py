@@ -11,7 +11,7 @@ import matplotlib.pylab as plt
 
 train_loss_list = []
 
-iters_num = 1000
+iters_num = 10000
 train_size = x_train.shape[0]
 batch_size = 100
 learning_rate = 0.1
@@ -31,8 +31,9 @@ for i in range(iters_num):
 
     loss = network.loss(x_batch, t_batch)
     train_loss_list.append(loss)
+    print(train_loss_list)
     if(i%100==0):
-        plt.plot(loss)
+        plt.plot(train_loss_list)
         plt.savefig('./chapter4/costfunctionOfTrainNeuralnet_%d.png'%i)
         plt.clf()
 
