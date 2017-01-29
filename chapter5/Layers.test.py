@@ -59,6 +59,34 @@ class TestAddLayer(unittest.TestCase):
       self.assertEqual(dapple, 300)
       self.assertEqual(dorange, 300)
 
+class ReluLayer(unittest.TestCase):
+    def testForward(self):
+        val = np.array([1, 10000, 0, -1])
+
+        relu_layer = l.ReluLayer()
+
+        result = relu_layer.forward(val)
+
+        self.assertEqual(result[0], 1)
+        self.assertEqual(result[1], 10000)
+        self.assertEqual(result[2], 0)
+        self.assertEqual(result[3], 0)
+
+    def testBackword(self):
+        val = np.array([1, 10000, 0, -1])
+
+        relu_layer = l.ReluLayer()
+
+        result = relu_layer.forward(val)
+
+        d = np.array([100, -10, 0, 1])
+        bk = relu_layer.backward(d)
+
+        self.assertEqual(bk[0], 100)
+        self.assertEqual(bk[1], -10)
+        self.assertEqual(bk[2], 0)
+        self.assertEqual(bk[3], 0)
+
 class TestCompLayer(unittest.TestCase):
 
   def testcomp(self):
