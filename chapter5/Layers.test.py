@@ -36,6 +36,28 @@ class TestMulLayer(unittest.TestCase):
       self.assertEqual(round(dapple_num,0), 110)
       self.assertEqual(round(dtax_price,0), 200)
 
+class TestAddLayer(unittest.TestCase):
+
+  def testForward(self):
+      apple = 100
+      orange = 200
+
+      mul_layer = l.AddLayer()
+      price = mul_layer.forward(apple, orange)
+
+      self.assertEqual(int(price), 300)
+
+  def testBackword(self):
+      apple = 100
+      orange = 200
+
+      mul_layer = l.AddLayer()
+      price = mul_layer.forward(apple, orange)
+
+      dapple, dorange = mul_layer.backward(price)
+
+      self.assertEqual(dapple, 300)
+      self.assertEqual(dorange, 300)
 
 
 if __name__ == '__main__':
