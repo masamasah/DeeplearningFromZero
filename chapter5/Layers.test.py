@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 
-import mulLayer as ml
+import Layers as l
 
 class TestMulLayer(unittest.TestCase):
 
@@ -10,8 +10,8 @@ class TestMulLayer(unittest.TestCase):
       apple_num = 2
       tax = 1.1
 
-      mul_apple_layer = ml.MulLayer()
-      mul_tax_layer = ml.MulLayer()
+      mul_apple_layer = l.MulLayer()
+      mul_tax_layer = l.MulLayer()
 
       apple_price = mul_apple_layer.forward(apple, apple_num)
       price = mul_tax_layer.forward(apple_price, tax)
@@ -22,8 +22,8 @@ class TestMulLayer(unittest.TestCase):
       apple = 100
       apple_num = 2
       tax = 1.1
-      mul_apple_layer = ml.MulLayer()
-      mul_tax_layer = ml.MulLayer()
+      mul_apple_layer = l.MulLayer()
+      mul_tax_layer = l.MulLayer()
 
       apple_price = mul_apple_layer.forward(apple, apple_num)
       price = mul_tax_layer.forward(apple_price, tax)
